@@ -1,0 +1,53 @@
+s<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake-game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section>
+        <div class="infos">
+            <div class="info">
+                <!-- high score= ab tak ka sabse best performance.. why is high-score stored in localStorage?? because high score should notdisappear when the game restats or page refreshes.-->
+                <h3>High Score:
+                    <span id="high-score">0</span>
+                </h3>
+            </div>
+            <div class="info">
+                <h3>Score:
+                    <span id="score">0</span>
+                </h3>
+            </div>
+            <div class="info">
+                <h3>Time:
+                    <span id="time">00:00</span>
+                </h3>
+
+            </div>
+        </div>
+        
+        <div class="board">
+        </div>
+    </section>
+    <!-- modal is a UI box that appears at the top of the page to grab user attention ex-welcomescreen, popup,alert -->
+    <div class="modal">        
+        <div class="start-game">
+            <h3>Welcome to the  <span>snake-Game</span></h3>
+            <button class="btn  btn-start">Start Game</button>
+        </div>
+        <div class="game-over">
+            <h3>Game Over</h3>
+            <button class="btn btn-restart">Restart Game</button>
+        </div>
+    </div>
+
+    <div class="newRecordText">NEW RECORD!🎉</div>
+    
+</main>
+
+  <script src="script.js"></script>  
+</body>
+</html>

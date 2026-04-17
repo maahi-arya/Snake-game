@@ -1,0 +1,271 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+html,body{
+    height:100%;          /* 100% of its parent elemnt */
+    width:100%;
+    overflow: hidden;
+}
+:root{
+    --bg-primary-color: #333333 ;
+    --bg-fill-color: #44dd7c;
+    ;
+    --bg-food-color: rgb(236, 49, 49);
+
+    --text-primary-color:rgba(255, 255, 255, 0.966);
+
+    /* spacing variables*/
+    --space-xs:4px;
+    --space-sm:8px;
+    --space-md:16px;
+    --space-lg:24px;
+    --space-xl:32px;
+    --space-2xl:40px;
+    --space-3xl:48px;
+
+    --border-primary-color: #333333;
+
+    --border-radius-xs: 4px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 20px;
+    --border-radius-2xl: 24px;
+
+}
+html{
+    background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+main,section{
+    width:100vw;
+    height:100vh;
+}
+main{
+    position: fixed;
+    inset:0;
+    background-color:var(--bg-primary-color);
+}
+
+.btn{
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    font-size: medium;
+    font-weight:500;
+    letter-spacing: 1px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    background-color:brown;
+    filter:brightness(1.1);
+    /* box-shadow: 0 0 9px rgb(16, 19, 161); */
+    transition: all 0.3s ease;
+}
+.btn:hover{
+    transform: scale(1.3) ; /*property name, duration, timing function, delay(optional)*/
+     transform: translateY(-7px);
+    text-shadow: 
+    0 0 8px rgba(233, 240, 240, 0.9),
+    0 0 13px rgba(0, 255, 255, 0.6);
+    transition: 
+    transform 0.8s ease,
+    text-shadow 0.5s ease;
+}
+section{
+    padding:var(--space-lg);
+    display: flex;
+    /* height:100%; */
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+section .infos{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.info{
+    padding: var(--space-xs) /*top-bottom*/ var(--space-sm) /* left-right*/;
+    border: 2.5px solid whitesmoke;
+    border-radius: var(--border-radius-sm);
+    color:#62dac2;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: 'Orbitron',sans-serif;
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+    transition: 
+    transform 0.8s ease,
+    text-shadow 0.5s ease;
+}
+.info:hover{
+    transform: translateY(-7px);
+    text-shadow: 
+    0 0 8px rgba(0, 255, 255, 0.9),
+    0 0 13px rgba(0, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.board{
+    border:  1px solid rgba(0, 255, 255, 0.9);
+    box-shadow: 0px 0px 20px rgba(108, 211, 211, 0.9);
+    flex-grow:1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px,1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px,1fr));
+    
+}
+.block{
+    width:50px;
+    height:50px;
+    border: 3px solid rgb(105, 101, 101);
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+.fill{
+    background-color: var(--bg-fill-color);
+    box-shadow: 0 0 14px rgba(233, 225, 225, 0.795);
+}
+.food{
+     background-color: var(--bg-food-color);
+     font-size: 5px;
+     border-radius: 50%;
+     animation: pulse 0.9s infinite;               /*name , duration, repeat*/
+     box-shadow: 0 0 15px rgb(224, 83, 32)
+
+}
+@keyframes pulse {
+    0%{ transform: scale(1);}
+    50%{ transform: scale(1.15);}
+    100%{ transform: scale(1);}
+
+}
+.score-pop{
+    animation: scorePop 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+@keyframes scorePop {
+    0%{ transform: scale(1);
+        color: white;
+        text-shadow: none;
+    }
+    50%{
+        transform: scale(2);
+        color:rgb(235, 204, 33);
+        text-shadow: 0 0 10px rgb(233, 204, 42);
+    }
+    100%{
+        transform: scale(1);
+        color:white;
+        text-shadow: none;
+    }
+}
+#score{
+    display: inline-block;
+}
+
+
+.modal{
+    height: 100vh;  /*we give viewport height and viewport width to work on all screen sizes*/
+    width:100vw;
+    position: fixed;
+    top: 0;
+    /* background-color: rgb(59, 53, 53); */
+    backdrop-filter: blur(3px);         /*blur the background of modal*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal .start-game, .game-over{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:var(--space-lg);
+    padding: 20px 50px;
+}
+.modal .game-over{
+    display: none;
+}
+.start-game h3{
+    font-size: 35px;
+    text-transform: uppercase;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.start-game h3:hover{
+    transform: translateY(-7px);
+    text-shadow: 
+    0 0 8px rgba(233, 240, 240, 0.9),
+    0 0 13px rgba(0, 255, 255, 0.6);
+    transition: 
+    transform 0.8s ease,
+    text-shadow 0.5s ease;
+
+}
+.start-game h3 span{
+    color:rgb(236, 236, 50);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: -2px;
+}
+.newRecordText{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) scale(0.5);
+    /* background-color: orangered; */
+    font-size: 5rem;
+    font-weight:bold;
+    white-space: nowrap;
+    text-shadow: 
+    0 0  10px gold,
+    0 0  20px  rgb(231, 203, 43),
+    0 0 30px rgb(175, 156, 47);
+    opacity:0;                  /*hidden initially*/
+    visibility: visible;
+    z-index: 9999;              /*appear on top of everything*/
+}
+.show-record{
+    animation: pop 2.5s ease-out forwards; 
+}
+@keyframes pop{
+    0%{
+        transform: translateX(-50%) scale(0.5);
+        opacity:0;
+        /* letter-spacing: 2px; */
+    }
+    30%{
+        transform: translateX(-50%) scale(1.5);
+        opacity:1;
+        /* letter-spacing: 6px; */
+    }
+    100%{
+        transform: translateX(-50%) scale(1.7);
+        opacity:0;
+        /* letter-spacing: 1px; */
+    }
+}
+.snake-head{
+    position: relative;        /*head is a parent and eyes are child --so that's why we give parent snake-head position:relative*/    
+    background-color:#22c55e;
+}
+.snake-head::before,                              /*these are the pseudo-elements---- they are fake/virtual elemnts created by css*/
+.snake-head::after {                              /*::before-- element se pehle dikhta hai and ::after element ke baad dikhta hai*/
+    content: "";                                  /*we combine these two beacuse we dont want to apply same css for both the classes*/
+    position:absolute;
+    top:6px;
+    width:5px;
+    height:5px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: 0 0  10px #21e76a;
+    
+}
+.snake-head::before{
+    left:5px;         /*distance from left side*/
+}
+.snake-head::after{
+    right:5px;       /*distance from right side*/
+}
+
